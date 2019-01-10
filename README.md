@@ -1,5 +1,5 @@
 # globalWindTrends
-Step 1: Ran ID_Lat_Lon.ipynp (/users/a/a/aametcal/isd-lite/scripts/dataCleaning) 
+Step 1: Ran ID_Lat_Lon.ipynp (globalWindTrends/scripts/dataCleaning/ID_Lat_Lon.ipynb) 
     which did the following:
     - opens isd-history.csv
     - creates new "ID" field = "USAF"+"WBAN"
@@ -8,6 +8,3 @@ Step 1: Ran ID_Lat_Lon.ipynp (/users/a/a/aametcal/isd-lite/scripts/dataCleaning)
     - Writes to file "ID-Info.csv", which is basically "isd-history" with the records mentioned above
     removed
     - Writes to file "IDs_23686.csv", which is simply a list of the remaining IDs.
-
-Step 2: created a field in ArcGIS LatLonKey called DateDiff which is the difference in years between start and
-    end times.  This should be helpful for future queries.
