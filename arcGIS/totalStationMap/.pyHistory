@@ -1,0 +1,6 @@
+﻿print("hello")
+print "hello"
+conda
+refreshActiveView
+import arcpy
+arcpy.RefreshActiveView()
