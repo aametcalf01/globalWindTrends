@@ -1,0 +1,14 @@
+#!/bin/sh
+#This job needs 1 compute node with 1 processor per node
+#PBS -l nodes=1 :ppn=1
+#It should be allowed to run for up to 24 hours
+#PBS -l walltime=24:00:00
+# Name of job
+#PBS -N AnnualStats
+# Send me mail of job start, job end and if job aborts
+#PBS -M Andrew.Metcalf@uvm.edu
+#PBS -m bea
+
+cd /users/a/a/aametcal/isd-lite/scripts
+
+python3 stationTrendsByYear.py 1972 2017
