@@ -1,8 +1,8 @@
 #!/bin/sh
 #This job needs 1 compute node with 1 processor per node
 #PBS -l nodes=1 :ppn=1
-#It should be allowed to run for up to 24 hours
-#PBS -l walltime=24:00:00
+#It should be allowed to run for up to 30 hours
+#PBS -l walltime=30:00:00
 # Name of job
 #PBS -N AnnualStats
 # Send me mail of job start, job end and if job aborts

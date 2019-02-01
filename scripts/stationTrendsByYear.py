@@ -18,6 +18,7 @@ def calcAnnualStationStats(beginYear, endYear):
     
     #loop through the years specified by function
     for year in range(beginYear, endYear+1):
+        print(year)
         
         #change to the directory for a specific year
         os.chdir(str(year))
@@ -29,7 +30,7 @@ def calcAnnualStationStats(beginYear, endYear):
         for file in lst:
             
             # read data into pandas data frame
-            df = pd.read_csv(file, compression='gzip', header=None, sep=r"\s+",
+            df = pd.read_csv(file, header=None, sep=r"\s+",
                              engine = "python",
                              names = ["Year","Month","Day","Hour","Temperature","DewPoint", "SLP",
        "Direction","Speed","CoverageCode", "Depth1","Depth6"])
