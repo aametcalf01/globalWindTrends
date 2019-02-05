@@ -33,7 +33,7 @@ def calcAnnualStationStats(beginYear, endYear):
             df = pd.read_csv(file, header=None, sep=r"\s+",
                              engine = "python",
                              names = ["Year","Month","Day","Hour","Temperature","DewPoint", "SLP",
-       "Direction","Speed","CoverageCode", "Depth1","Depth6"])
+       "Direction","Speed","CoverageCode", "Depth1","Depth6"],na_values = '-9999')
             
 
             # Create python lists for direction and speed list
