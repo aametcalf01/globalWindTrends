@@ -35,6 +35,9 @@ def calcAnnualStationStats(beginYear, endYear):
                              names = ["Year","Month","Day","Hour","Temperature","DewPoint", "SLP",
        "Direction","Speed","CoverageCode", "Depth1","Depth6"],na_values = '-9999')
             
+            # Want to get rid of NaN values if they exist in the Direction or Speed
+            # columns
+            df = df.dropna(subset=['Direction','Speed'])
 
             # Create python lists for direction and speed list
             # We use this instead of np.arrays since calcAngleDir takes
