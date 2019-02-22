@@ -1,3 +1,5 @@
+##NOTE: make sure to change directory this file writes to on line 66: annualxx
+
 import sys
 import os
 import pandas as pd
@@ -61,7 +63,7 @@ def calcAnnualStationStats(beginYear, endYear):
             
             #make filename out of original filename ex. 029070-99999-1902.gz
             filename = str(file[:-8])
-            path = "/users/a/a/aametcal/scratch/isd-lite/annual/"+filename+".csv"
+            path = "/users/a/a/aametcal/scratch/isd-lite/annual90/"+filename+".csv"
             
             #if file does not exist, write header
             if not os.path.isfile(path):
