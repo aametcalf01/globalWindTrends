@@ -14,3 +14,6 @@ Step 2: created totalStationMap in ArcGIS Pro from "ID-Info.csv" created in step
 Step 3: created calcAngleDir.py to calculate prevailing (or average wind direction), given a list of wind directions and speeds.
 
 Step 4: Created stationTrendsByYear.py which takes as input a time range and comupetes the mean wind speed, median wind speed, and prevailing wind direction for every station on an annual basis for the years specified.  Writes to ~/scratch/isd-lite/annual
+
+Step 5: Created calcSlopes.py to calculate the slopes of the OLS regression performed on the annual mean winds speed for the annual data created in part 4.  Writes to stationAtrr[start_year].csv
+
