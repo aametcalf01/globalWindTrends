@@ -7,7 +7,7 @@ arcpy.env.workspace = r"C:\Users\andymetcalf\Documents\research\globalWindTrends
 rasters = arcpy.ListRasters("*", "TIF")
 print(rasters)
 
-arcpy.management.Mosaic(rasters,rasters[0])
+# arcpy.management.Mosaic(rasters,rasters[0])
 
 
 
