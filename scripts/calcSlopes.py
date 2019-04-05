@@ -1,5 +1,5 @@
 #This script was created to calculated the slopes of the regression OLS regression 
-#on the annual mean wind speed for continuous records from 1972 to 2017.  The output 
+#on the annual mean wind speed for continuous records from 'start' to 'end'.  The output 
 #is a .csv file called stationAttr.csv (housed in the data-light directory with the 
 #following attributes:
 #stationNumber: the station id
@@ -8,8 +8,8 @@
 #hightBound: the upper 95% confidence bound of the OLS slope
 #slopeInt: {1 if lowBound & highBound >0, -1 if lowBound & highBound>0, else 0}
             #==> indicates positive or negative trend
-#pw1972: prevailing wind 1972
-#pw2017: prevailing wind 2017
+#pw<start>: prevailing wind "start"
+#pw<end>: prevailing wind "end"
 
 #imports
 import os
@@ -20,8 +20,14 @@ import time
 import statsmodels.api as sm
 import csv
 
+start = 1990
+end = 2017
+startAbr = str(90)
+endAbr = str(17)
+span = end-start+1 #this span is inclusive of start and end years
+
 #get a list of all of the stations in the annual directory
-os.chdir("/users/a/a/aametcal/scratch/isd-lite/annual72")
+os.chdir("/users/a/a/aametcal/scratch/isd-lite/annual"+startAbr)
 annualStationList = os.listdir()
 
 #get a list of all of the id's that we previously selected
@@ -50,24 +56,24 @@ for i in range(len(stationList)):
     
 
 #Compute desired atributes for stations that have continuous
-#data ranging from 1972-2017 (landsat data range)
+#data ranging from "start"-"end" (landsat data range)
 
-os.chdir("/users/a/a/aametcal/scratch/isd-lite/annual72")
+os.chdir("/users/a/a/aametcal/scratch/isd-lite/annual"+startAbr)
 
-with open("/users/a/a/aametcal/isd-lite/data_light/stationAttr72.csv", mode = 'w') as csv_file:
+with open("/users/a/a/aametcal/isd-lite/data_light/stationAttr"+startAbr+".csv", mode = 'w') as csv_file:
     fieldnames = ["stationNumber",
                   "slope",
                   "lowBound",
                   "hightBound",
                   "slopeInt",
-                  "pw1972",
-                  "pw2017"]
+                  "pw"+str(start),
+                  "pw"+str(end)]
     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
     writer.writeheader()
     
     for station in stationList:
         sdf = pd.read_csv(station)
-        if len(sdf) !=46:
+        if len(sdf) !=span:
             continue
         else:
             X = sdf.year
@@ -85,8 +91,8 @@ with open("/users/a/a/aametcal/isd-lite/data_light/stationAttr72.csv", mode = 'w
             highBound = ci[1][1]
             #print(slope, lowBound, highBound)
             stationNumber = station[0:-4]
-            pw1972 = sdf.prevailingWind.values[0]
-            pw2017 = sdf.prevailingWind.values[-1] 
+            pwStart = sdf.prevailingWind.values[0]
+            pwEnd = sdf.prevailingWind.values[-1] 
 
             if (lowBound<0 and highBound<0):
                 slopeInt = -1
@@ -100,6 +106,6 @@ with open("/users/a/a/aametcal/isd-lite/data_light/stationAttr72.csv", mode = 'w
                   "lowBound":lowBound,
                   "hightBound":highBound,
                   "slopeInt":slopeInt,
-                  "pw1972":pw1972,
-                  "pw2017":pw2017})
+                  "pw"+str(start):pwStart,
+                  "pw"+str(end):pwEnd})
         
