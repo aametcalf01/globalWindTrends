@@ -1,0 +1,69 @@
+Messages
+Start Time: Wednesday, April 10, 2019 1:37:54 PM
+Running script OptimizedOutlierAnalysis...
+************************** Initial Data Assessment ***************************
+Making sure there are enough weighted features for analysis....
+- There are 4749 valid input features.
+Evaluating the Analysis Field values....
+- SLOPEINT Properties:
+        Min:       -1.0000
+        Max:        1.0000
+        Mean:      -0.0526
+        Std. Dev.:  0.7616
+Looking for locational outliers....
+- There were 71 outlier locations; these will not be used to compute the optimal fixed distance band.
+***************************** Scale of Analysis ******************************
+Looking for an optimal scale of analysis by assessing the intensity of clustering at increasing distances....
+- The optimal fixed distance band is based on peak clustering found at 1040134.7788 Meters
+- Features with no neighbors at this distance were adapted to include their nearest neighbor
+************************* Optimized Outlier Analysis *************************
+Creating the random reference distribution with 499 permutations....
+Finding statistically significant outliers of high and low SLOPEINT values....
+- There are 1953 output features statistically significant based on an FDR correction for multiple testing and spatial dependence.
+- There are 504 statistically significant high outlier features.
+- There are 187 statistically significant low outlier features.
+- There are 507 features part of statistically significant low clusters.
+- There are 755 features part of statistically significant high clusters
+- 5% of features had less than 8 neighbors based on the distance band of 1040134.7788 Meters
+*********************************** Output ***********************************
+- Pink output features are part of a cluster of high SLOPEINT values.
+- Light Blue output features are part of a cluster of low SLOPEINT values.
+- Red output features represent high outliers within a cluster of low SLOPEINT values..
+- Blue output features represent low outliers within a cluster of high SLOPEINT values.
+Completed script Optimized Outlier Analysis...
+Succeeded at Wednesday, April 10, 2019 1:38:11 PM (Elapsed Time: 16.59 seconds)
+
+
+
+
+
+
+
+
+
+Start Time: Wednesday, April 10, 2019 4:27:40 PM
+Running script OptimizedHotSpotAnalysis...
+************************** Initial Data Assessment ***************************
+Making sure there are enough weighted features for analysis....
+- There are 4749 valid input features.
+Evaluating the Analysis Field values....
+- SLOPEINT Properties:
+        Min:       -1.0000
+        Max:        1.0000
+        Mean:      -0.0526
+        Std. Dev.:  0.7616
+Looking for locational outliers....
+- There were 71 outlier locations; these will not be used to compute the optimal fixed distance band.
+***************************** Scale of Analysis ******************************
+Looking for an optimal scale of analysis by assessing the intensity of clustering at increasing distances....
+- The optimal fixed distance band is based on peak clustering found at 1040134.7788 Meters
+***************************** Hot Spot Analysis ******************************
+Finding statistically significant clusters of high and low SLOPEINT values....
+- There are 2002 output features statistically significant based on an FDR correction for multiple testing and spatial dependence.
+- 4.7% of features had less than 8 neighbors based on the distance band of 1040134.7788 Meters
+*********************************** Output ***********************************
+Creating output feature class: C:\Users\andymetcalf\Documents\research\globalWindTrends\arcGIS\stations90\stations90.gdb\stationPoints90_OptimizedHot
+- Red output features represent hot spots where high SLOPEINT values cluster.
+- Blue output features represent cold spots where low SLOPEINT values cluster.
+Completed script Optimized Hot Spot Analysis...
+Succeeded at Wednesday, April 10, 2019 4:27:55 PM (Elapsed Time: 14.97 seconds)
