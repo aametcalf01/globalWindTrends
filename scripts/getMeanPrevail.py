@@ -67,6 +67,8 @@ with open("/users/a/a/aametcal/isd-lite/data_light/meanPrevail"+startAbr+".csv",
                   "hightBound",
                   "slopeInt",
                   "meanWind",
+                  "mw"+str(start),
+                  "mw"+str(end),
                   "pw"+str(start),
                   "pw"+str(end)]
     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
@@ -95,6 +97,8 @@ with open("/users/a/a/aametcal/isd-lite/data_light/meanPrevail"+startAbr+".csv",
             pwStart = sdf.prevailingWind.values[0]
             pwEnd = sdf.prevailingWind.values[-1] 
             
+            mwStart = sdf.meanWindSpeed.values[0]
+            mwEnd = sdf.meanWindSpeed.values[-1]
             mws = sdf.meanWindSpeed.mean()
 
             if (lowBound<0 and highBound<0):
@@ -110,6 +114,8 @@ with open("/users/a/a/aametcal/isd-lite/data_light/meanPrevail"+startAbr+".csv",
                   "hightBound":highBound,
                   "slopeInt":slopeInt,
                   "meanWind":mws,
+                  "mw"+str(start):mwStart,
+                  "mw"+str(end):mwEnd,
                   "pw"+str(start):pwStart,
                   "pw"+str(end):pwEnd})
         
