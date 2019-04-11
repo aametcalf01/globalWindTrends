@@ -19,6 +19,14 @@ import matplotlib.pyplot as plt
 import time
 import statsmodels.api as sm
 import csv
+import math
+
+def calcAngleDiff(a1,a2):
+    """function we use to calculate the different between prevailing wind
+    vectors"""
+    a1 = math.radians(a1)
+    a2 = math.radians(a2)
+    return abs(math.degrees(math.atan2(math.sin(a2-a1), math.cos(a2-a1))))
 
 start = 1990
 end = 2017
@@ -70,7 +78,8 @@ with open("/users/a/a/aametcal/isd-lite/data_light/meanPrevail"+startAbr+".csv",
                   "mw"+str(start),
                   "mw"+str(end),
                   "pw"+str(start),
-                  "pw"+str(end)]
+                  "pw"+str(end),
+                  "pwDiff"]
     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
     writer.writeheader()
     
@@ -100,6 +109,8 @@ with open("/users/a/a/aametcal/isd-lite/data_light/meanPrevail"+startAbr+".csv",
             mwStart = sdf.meanWindSpeed.values[0]
             mwEnd = sdf.meanWindSpeed.values[-1]
             mws = sdf.meanWindSpeed.mean()
+            
+            pwDiff = calcAngleDiff(pwStart,pwEnd)
 
             if (lowBound<0 and highBound<0):
                 slopeInt = -1
@@ -117,5 +128,6 @@ with open("/users/a/a/aametcal/isd-lite/data_light/meanPrevail"+startAbr+".csv",
                   "mw"+str(start):mwStart,
                   "mw"+str(end):mwEnd,
                   "pw"+str(start):pwStart,
-                  "pw"+str(end):pwEnd})
+                  "pw"+str(end):pwEnd,
+                  "pwDiff":pwDiff})
         
